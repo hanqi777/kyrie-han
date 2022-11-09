@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import store from '@/store/index'
 
 const routes = [
   {
@@ -56,13 +56,21 @@ const router = createRouter({
 })
 
 
-// router.beforeEach((to,from,next)=>{
-//   if(to.meta.auth){
-//     next('/login')
-//   }
-//   else{
-//     next()
-//   }
-// })
+router.beforeEach((to,from,next)=>{
+  // if(to.meta.auth){
+  //   next('/login')
+  // }
+  // else{
+   
+  // }
+  store.dispatch('admins/getAdmin').then((res)=>{
+    console.log(res.data[0]);
+  })
+  store.dispatch('users/usersInfo').then((res)=>{
+    console.log(res.data[0]);
+  })
+
+  next()
+})
 
 export default router

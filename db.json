@@ -70,9 +70,9 @@
 
     "admins": [
       {
-        "adimin1":{"id": 1,"adminName":"kyrie", "password": "123qqq", "token": "fsdsfsdfsgfdsgfsfsfsdfsd"},
-        "adimin2":{"id": 2,"adminName":"curry", "password": "123www", "token": "afkfgfgdfjadfafgfhfgjhgfa"},
-        "adimin3":{"id": 3,"adminName":"kobe", "password": "123fff", "token": "fshfsjkdskghskdfhghdfkhhdskg"}
+        "admin1":{"id": 1,"adminName":"kyrie", "password": "123qqq", "token": "fsdsfsdfsgfdsgfsfsfsdfsd"},
+        "admin2":{"id": 2,"adminName":"curry", "password": "123www", "token": "afkfgfgdfjadfafgfhfgjhgfa"},
+        "admin3":{"id": 3,"adminName":"kobe", "password": "123fff", "token": "fshfsjkdskghskdfhghdfkhhdskg"}
       }
     ]
   }

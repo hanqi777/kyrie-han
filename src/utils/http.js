@@ -13,7 +13,12 @@ const instance = axios.create({
 
 
 // 添加请求拦截器
-instance.interceptors.request.use(function (config) {
+instance.interceptors.request.use(function (
+  config
+  ) {
+    
+    return config;
+ 
   // 在发送请求之前做些什么
 
 //   config.headers.token = store.state.users.token
