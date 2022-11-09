@@ -1,0 +1,78 @@
+{
+    "users": [
+      { 
+        "user1":[
+        {"id": 1001, "username": "kyrie", "age":22,"department":"HR","address":"7024 Johnny Mercer Boulevard",
+        "mobile":15912341234,"email":"auayjwaygd@iubridge.com","month":[
+        {"m":1,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":1},
+        {"m":2,"shouldBeAttendance":"168h","actualattendance":"176h","numLate":2},
+        {"m":3,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+        {"m":4,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":3},
+        {"m":5,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":3}
+      ]
+      
+      }
+      ],
+      "user2":[
+        {"id": 1002, "username": "Marry", "age":23,"department":"AD","address":"Cupertino CA 95014",
+        "mobile":15923456789,"email":"123456@sina.com","month":[
+        {"m":1,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+        {"m":2,"shouldBeAttendance":"168h","actualattendance":"168h","numLate":0},
+        {"m":3,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+        {"m":4,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+        {"m":5,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0}
+      ]
+      
+      }
+      ],
+      "user3":[
+        {"id": 1003, "username": "kitty", "age":30,"department":"FD","address":"Milpitas CA 95035",
+        "mobile":15934567891,"email":"123456@163.com","month":[
+        {"m":1,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+        {"m":2,"shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+        {"m":3,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+        {"m":4,"shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+        {"m":5,"shouldBeAttendance":"176h","actualattendance":"156h","numLate":3}
+      ]
+      
+      }
+      ],
+      "user4":[
+        {"id": 1004, "username": "Tom", "age":42,"department":"LD","address":"1101 S Main St APT 203 Milpitas CA ",
+        "mobile":15945678912,"email":"123456@sohu.com","month":[
+        {"m":1,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":2},
+        {"m":2,"shouldBeAttendance":"168h","actualattendance":"171h","numLate":3},
+        {"m":3,"shouldBeAttendance":"176h","actualattendance":"161h","numLate":1},
+        {"m":4,"shouldBeAttendance":"176h","actualattendance":"111h","numLate":6},
+        {"m":5,"shouldBeAttendance":"176h","actualattendance":"171h","numLate":1}
+      ]
+      
+      }
+      ],
+      "user5":[
+        {"id": 1005, "username": "Mike", "age":51,"department":"WB","address":"1 Infinite Loop Cupertino CA 95014",
+        "mobile":15956789123,"email":"123456@qq.com","month":[
+        {"m":1,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":3},
+        {"m":2,"shouldBeAttendance":"168h","actualattendance":"176h","numLate":1},
+        {"m":3,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":1},
+        {"m":4,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":0},
+        {"m":5,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":0}
+      ]   
+      }
+      ]
+     }
+
+
+    ],
+
+
+
+
+    "admins": [
+      {
+        "adimin1":{"id": 1,"adminName":"kyrie", "password": "123qqq", "token": "fsdsfsdfsgfdsgfsfsfsdfsd"},
+        "adimin2":{"id": 2,"adminName":"curry", "password": "123www", "token": "afkfgfgdfjadfafgfhfgjhgfa"},
+        "adimin3":{"id": 3,"adminName":"kobe", "password": "123fff", "token": "fshfsjkdskghskdfhghdfkhhdskg"}
+      }
+    ]
+  }

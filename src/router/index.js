@@ -7,6 +7,7 @@ const routes = [
     name: 'index',
     redirect:'/home',
     component: () => import('@/views/Index.vue'),
+    meta:{auth:true},
     children:[
       {
         path: '/home',
@@ -44,7 +45,8 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/Login.vue')
+    component: () => import('@/views/Login.vue'),
+    meta:{auth:false},
   }
 ]
 
@@ -52,5 +54,15 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+
+// router.beforeEach((to,from,next)=>{
+//   if(to.meta.auth){
+//     next('/login')
+//   }
+//   else{
+//     next()
+//   }
+// })
 
 export default router
