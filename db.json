@@ -1,16 +1,16 @@
 { 
     "users": [ 
  
-        {"id": 1001, "username": "kyrie", "age":22,"department":"HR","address":"7024 Johnny Mercer Boulevard",
-        "mobile":15912341234,"email":"auayjwaygd@iubridge.com"},  
-        {"id": 1002, "username": "Marry", "age":23,"department":"AD","address":"Cupertino CA 95014",
-        "mobile":15923456789,"email":"123456@sina.com"},
-        {"id": 1003, "username": "kitty", "age":30,"department":"FD","address":"Milpitas CA 95035",
-        "mobile":15934567891,"email":"123456@163.com"},
-        {"id": 1004, "username": "Tom", "age":42,"department":"LD","address":"1101 S Main St APT 203 Milpitas CA ",
-        "mobile":15945678912,"email":"123456@sohu.com"},
-        {"id": 1005, "username": "Mike", "age":51,"department":"WB","address":"1 Infinite Loop Cupertino CA 95014",
-        "mobile":15956789123,"email":"123456@qq.com"}
+        {"id": "1001", "username": "kyrie", "age":"22","department":"HR","address":"7024 Johnny Mercer Boulevard",
+        "mobile":"15912341234","email":"auayjwaygd@iubridge.com"},  
+        {"id": "1002", "username": "Marry", "age":"23","department":"AD","address":"Cupertino CA 95014",
+        "mobile":"15923456789","email":"123456@sina.com"},
+        {"id": "1003", "username": "kitty", "age":"30","department":"FD","address":"Milpitas CA 95035",
+        "mobile":"15934567891","email":"123456@163.com"},
+        {"id": "1004", "username": "Tom", "age":"42","department":"LD","address":"1101 S Main St APT 203 Milpitas CA ",
+        "mobile":"15945678912","email":"123456@sohu.com"},
+        {"id": "1005", "username": "Mike", "age":"51","department":"WB","address":"1 Infinite Loop Cupertino CA 95014",
+        "mobile":"15956789123","email":"123456@qq.com"}
 
     ],
 
@@ -20,39 +20,39 @@
     "months":[
       {
         "1m":[
-          {"id":1001,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":1002,"shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
-          {"id":1003,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":1004,"shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
-          {"id":1005,"shouldBeAttendance":"176h","actualattendance":"156h","numLate":3}
+          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"156h","numLate":3}
         ],
         "2m":[
-          {"id":1001,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":3},
-          {"id":1002,"shouldBeAttendance":"168h","actualattendance":"176h","numLate":1},
-          {"id":1003,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":1},
-          {"id":1004,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":0},
-          {"id":1005,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":0}
+          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"168h","numLate":3},
+          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"176h","numLate":1},
+          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":1},
+          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"168h","numLate":0},
+          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"168h","numLate":0}
         ],
         "3m":[
-          {"id":1001,"shouldBeAttendance":"176h","actualattendance":"168h","numLate":2},
-          {"id":1002,"shouldBeAttendance":"168h","actualattendance":"171h","numLate":3},
-          {"id":1003,"shouldBeAttendance":"176h","actualattendance":"161h","numLate":1},
-          {"id":1004,"shouldBeAttendance":"176h","actualattendance":"111h","numLate":6},
-          {"id":1005,"shouldBeAttendance":"176h","actualattendance":"171h","numLate":1}
+          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"168h","numLate":2},
+          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"171h","numLate":3},
+          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"161h","numLate":1},
+          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"111h","numLate":6},
+          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"171h","numLate":1}
         ],
         "4m":[
-          {"id":1001,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":1002,"shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
-          {"id":1003,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":1004,"shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
-          {"id":1005,"shouldBeAttendance":"176h","actualattendance":"156h","numLate":3}
+          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"156h","numLate":3}
         ],
         "5m":[
-          {"id":1001,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":1002,"shouldBeAttendance":"168h","actualattendance":"168h","numLate":0},
-          {"id":1003,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":1004,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":1005,"shouldBeAttendance":"176h","actualattendance":"176h","numLate":0}
+          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"168h","numLate":0},
+          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0}
         ]
       
     }
@@ -62,9 +62,9 @@
 
 
     "admins": [
-      {"id": 1,"adminName":"kyrie", "password": "123qqq", "token": "fsdsfsdfsgfdsgfsfsfsdfsd"},
-      {"id": 2,"adminName":"curry", "password": "123www", "token": "afkfgfgdfjadfafgfhfgjhgfa"},
-      {"id": 3,"adminName":"kobe", "password": "123fff", "token": "fshfsjkdskghskdfhghdfkhhdskg"}
+      {"id": "1","adminName":"kyrie", "password": "123qqq", "token": "fsdsfsdfsgfdsgfsfsfsdfsd"},
+      {"id": "2","adminName":"curry", "password": "123www", "token": "afkfgfgdfjadfafgfhfgjhgfa"},
+      {"id": "3","adminName":"kobe", "password": "123fff", "token": "fshfsjkdskghskdfhghdfkhhdskg"}
     ]
 
 
