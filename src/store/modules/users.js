@@ -17,6 +17,10 @@ const mutations = {
 const actions = {
     getUsersInfo(){
         return http.get('/users')
+    },
+    deleteUser(state,id){
+        return http.delete('/users/' + id)
+
     }
 };
 
