@@ -1,15 +1,35 @@
 { 
     "users": [ 
  
-        {"id": "1001", "username": "kyrie", "age":"22","department":"HR","address":"7024 Johnny Mercer Boulevard",
+        {"id": 1,"jobId":1001, "username": "kyrie", "age":"22","department":"HR","address":"7024 Johnny Mercer Boulevard",
         "mobile":"15912341234","email":"auayjwaygd@iubridge.com"},  
-        {"id": "1002", "username": "Marry", "age":"23","department":"AD","address":"Cupertino CA 95014",
+        {"id": 2,"jobId":1002, "username": "Marry", "age":"23","department":"AD","address":"Cupertino CA 95014",
         "mobile":"15923456789","email":"123456@sina.com"},
-        {"id": "1003", "username": "kitty", "age":"30","department":"FD","address":"Milpitas CA 95035",
+        {"id": 3,"jobId":1003, "username": "kitty", "age":"30","department":"FD","address":"Milpitas CA 95035",
         "mobile":"15934567891","email":"123456@163.com"},
-        {"id": "1004", "username": "Tom", "age":"42","department":"LD","address":"1101 S Main St APT 203 Milpitas CA ",
+        {"id": 4,"jobId":1004, "username": "Tom", "age":"42","department":"LD","address":"1101 S Main St APT 203 Milpitas CA ",
         "mobile":"15945678912","email":"123456@sohu.com"},
-        {"id": "1005", "username": "Mike", "age":"51","department":"WB","address":"1 Infinite Loop Cupertino CA 95014",
+        {"id": 5,"jobId":1005, "username": "Mike", "age":"51","department":"WB","address":"1 Infinite Loop Cupertino CA 95014",
+        "mobile":"15956789123","email":"123456@qq.com"},
+        {"id": 6,"jobId":1006, "username": "Tonny", "age":"22","department":"HR","address":"7024 Johnny Mercer Boulevard",
+        "mobile":"15912341234","email":"auayjwaygd@iubridge.com"},  
+        {"id": 7,"jobId":1007, "username": "Linna", "age":"23","department":"AD","address":"Cupertino CA 95014",
+        "mobile":"15923456789","email":"123456@sina.com"},
+        {"id": 8,"jobId":1008, "username": "Aili", "age":"30","department":"FD","address":"Milpitas CA 95035",
+        "mobile":"15934567891","email":"123456@163.com"},
+        {"id": 9,"jobId":1009, "username": "Jun", "age":"42","department":"LD","address":"1101 S Main St APT 203 Milpitas CA ",
+        "mobile":"15945678912","email":"123456@sohu.com"},
+        {"id": 10,"jobId":10010, "username": "Sunny", "age":"51","department":"WB","address":"1 Infinite Loop Cupertino CA 95014",
+        "mobile":"15956789123","email":"123456@qq.com"},
+        {"id": 11,"jobId":1011, "username": "Puppy", "age":"22","department":"HR","address":"7024 Johnny Mercer Boulevard",
+        "mobile":"15912341234","email":"auayjwaygd@iubridge.com"},  
+        {"id": 12,"jobId":1012, "username": "Gitty", "age":"23","department":"AD","address":"Cupertino CA 95014",
+        "mobile":"15923456789","email":"123456@sina.com"},
+        {"id": 13,"jobId":1013, "username": "Soul", "age":"30","department":"FD","address":"Milpitas CA 95035",
+        "mobile":"15934567891","email":"123456@163.com"},
+        {"id": 14,"jobId":1014, "username": "Gragon", "age":"42","department":"LD","address":"1101 S Main St APT 203 Milpitas CA ",
+        "mobile":"15945678912","email":"123456@sohu.com"},
+        {"id": 15,"jobId":10015, "username": "Jams", "age":"51","department":"WB","address":"1 Infinite Loop Cupertino CA 95014",
         "mobile":"15956789123","email":"123456@qq.com"}
 
     ],
@@ -20,39 +40,89 @@
     "months":[
       {
         "1m":[
-          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
-          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
-          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"156h","numLate":3}
+          {"id":1,"jobId":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":2,"jobId":"1002","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+          {"id":3,"jobId":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":4,"jobId":"1004","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+          {"id":5,"jobId":"1005","shouldBeAttendance":"176h","actualattendance":"156h","numLate":3},
+          {"id":6,"jobId":"1006","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":7,"jobId":"1007","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+          {"id":8,"jobId":"1008","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":9,"jobId":"1009","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+          {"id":10,"jobId":"1010","shouldBeAttendance":"176h","actualattendance":"156h","numLate":3},
+          {"id":11,"jobId":"1011","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+          {"id":12,"jobId":"1012","shouldBeAttendance":"176h","actualattendance":"156h","numLate":3},
+          {"id":13,"jobId":"1013","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":14,"jobId":"1014","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+          {"id":15,"jobId":"1015","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0}
         ],
         "2m":[
-          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"168h","numLate":3},
-          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"176h","numLate":1},
-          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":1},
-          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"168h","numLate":0},
-          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"168h","numLate":0}
+          {"id":1,"jobId":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":2,"jobId":"1002","shouldBeAttendance":"168h","actualattendance":"165h","numLate":2},
+          {"id":3,"jobId":"1003","shouldBeAttendance":"176h","actualattendance":"173h","numLate":0},
+          {"id":4,"jobId":"1004","shouldBeAttendance":"176h","actualattendance":"167h","numLate":4},
+          {"id":5,"jobId":"1005","shouldBeAttendance":"176h","actualattendance":"158h","numLate":2},
+          {"id":6,"jobId":"1006","shouldBeAttendance":"176h","actualattendance":"172h","numLate":0},
+          {"id":7,"jobId":"1007","shouldBeAttendance":"168h","actualattendance":"161h","numLate":5},
+          {"id":8,"jobId":"1008","shouldBeAttendance":"176h","actualattendance":"173h","numLate":1},
+          {"id":9,"jobId":"1009","shouldBeAttendance":"176h","actualattendance":"157h","numLate":1},
+          {"id":10,"jobId":"1010","shouldBeAttendance":"176h","actualattendance":"166h","numLate":2},
+          {"id":11,"jobId":"1011","shouldBeAttendance":"176h","actualattendance":"156h","numLate":1},
+          {"id":12,"jobId":"1012","shouldBeAttendance":"176h","actualattendance":"135h","numLate":2},
+          {"id":13,"jobId":"1013","shouldBeAttendance":"176h","actualattendance":"165h","numLate":0},
+          {"id":14,"jobId":"1014","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+          {"id":15,"jobId":"1015","shouldBeAttendance":"176h","actualattendance":"167h","numLate":0}
         ],
         "3m":[
-          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"168h","numLate":2},
-          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"171h","numLate":3},
-          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"161h","numLate":1},
-          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"111h","numLate":6},
-          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"171h","numLate":1}
+          {"id":1,"jobId":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":2,"jobId":"1002","shouldBeAttendance":"168h","actualattendance":"160h","numLate":0},
+          {"id":3,"jobId":"1003","shouldBeAttendance":"176h","actualattendance":"156h","numLate":0},
+          {"id":4,"jobId":"1004","shouldBeAttendance":"176h","actualattendance":"134h","numLate":3},
+          {"id":5,"jobId":"1005","shouldBeAttendance":"176h","actualattendance":"156h","numLate":1},
+          {"id":6,"jobId":"1006","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":7,"jobId":"1007","shouldBeAttendance":"168h","actualattendance":"167h","numLate":2},
+          {"id":8,"jobId":"1008","shouldBeAttendance":"176h","actualattendance":"145h","numLate":0},
+          {"id":9,"jobId":"1009","shouldBeAttendance":"176h","actualattendance":"154h","numLate":1},
+          {"id":10,"jobId":"1010","shouldBeAttendance":"176h","actualattendance":"156h","numLate":2},
+          {"id":11,"jobId":"1011","shouldBeAttendance":"176h","actualattendance":"167h","numLate":1},
+          {"id":12,"jobId":"1012","shouldBeAttendance":"176h","actualattendance":"145h","numLate":1},
+          {"id":13,"jobId":"1013","shouldBeAttendance":"176h","actualattendance":"165h","numLate":0},
+          {"id":14,"jobId":"1014","shouldBeAttendance":"168h","actualattendance":"176h","numLate":1},
+          {"id":15,"jobId":"1015","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0}
         ],
         "4m":[
-          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
-          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
-          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"156h","numLate":3}
+          {"id":1,"jobId":"1001","shouldBeAttendance":"176h","actualattendance":"145h","numLate":0},
+          {"id":2,"jobId":"1002","shouldBeAttendance":"168h","actualattendance":"167h","numLate":1},
+          {"id":3,"jobId":"1003","shouldBeAttendance":"176h","actualattendance":"145h","numLate":0},
+          {"id":4,"jobId":"1004","shouldBeAttendance":"176h","actualattendance":"167h","numLate":1},
+          {"id":5,"jobId":"1005","shouldBeAttendance":"176h","actualattendance":"156h","numLate":2},
+          {"id":6,"jobId":"1006","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":7,"jobId":"1007","shouldBeAttendance":"168h","actualattendance":"156h","numLate":1},
+          {"id":8,"jobId":"1008","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":9,"jobId":"1009","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+          {"id":10,"jobId":"1010","shouldBeAttendance":"176h","actualattendance":"167h","numLate":1},
+          {"id":11,"jobId":"1011","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+          {"id":12,"jobId":"1012","shouldBeAttendance":"176h","actualattendance":"176h","numLate":1},
+          {"id":13,"jobId":"1013","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":14,"jobId":"1014","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+          {"id":15,"jobId":"1015","shouldBeAttendance":"176h","actualattendance":"156h","numLate":0}
         ],
         "5m":[
-          {"id":"1001","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":"1002","shouldBeAttendance":"168h","actualattendance":"168h","numLate":0},
-          {"id":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":"1004","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
-          {"id":"1005","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0}
+          {"id":1,"jobId":"1001","shouldBeAttendance":"176h","actualattendance":"145h","numLate":3},
+          {"id":2,"jobId":"1002","shouldBeAttendance":"168h","actualattendance":"160h","numLate":1},
+          {"id":3,"jobId":"1003","shouldBeAttendance":"176h","actualattendance":"176h","numLate":2},
+          {"id":4,"jobId":"1004","shouldBeAttendance":"176h","actualattendance":"120h","numLate":1},
+          {"id":5,"jobId":"1005","shouldBeAttendance":"176h","actualattendance":"145h","numLate":1},
+          {"id":6,"jobId":"1006","shouldBeAttendance":"176h","actualattendance":"176h","numLate":0},
+          {"id":7,"jobId":"1007","shouldBeAttendance":"168h","actualattendance":"175h","numLate":1},
+          {"id":8,"jobId":"1008","shouldBeAttendance":"176h","actualattendance":"176h","numLate":2},
+          {"id":9,"jobId":"1009","shouldBeAttendance":"176h","actualattendance":"156h","numLate":1},
+          {"id":10,"jobId":"1010","shouldBeAttendance":"176h","actualattendance":"156h","numLate":1},
+          {"id":11,"jobId":"1011","shouldBeAttendance":"176h","actualattendance":"176h","numLate":1},
+          {"id":12,"jobId":"1012","shouldBeAttendance":"176h","actualattendance":"147h","numLate":1},
+          {"id":13,"jobId":"1013","shouldBeAttendance":"176h","actualattendance":"147h","numLate":0},
+          {"id":14,"jobId":"1014","shouldBeAttendance":"168h","actualattendance":"147h","numLate":1},
+          {"id":15,"jobId":"1015","shouldBeAttendance":"176h","actualattendance":"157h","numLate":0}
         ]
       
     }
@@ -62,10 +132,13 @@
 
 
     "admins": [
-      {"id": "1","adminName":"kyrie", "password": "123qqq", "token": "fsdsfsdfsgfdsgfsfsfsdfsd"},
-      {"id": "2","adminName":"curry", "password": "123www", "token": "afkfgfgdfjadfafgfhfgjhgfa"},
-      {"id": "3","adminName":"kobe", "password": "123fff", "token": "fshfsjkdskghskdfhghdfkhhdskg"}
+      {"id": 1,"adminName":"kyrie", "password": "123qqq", "token": "fsdsfsdfsgfdsgfsfsfsdfsd"},
+      {"id": 2,"adminName":"curry", "password": "123www", "token": "afkfgfgdfjadfafgfhfgjhgfa"},
+      {"id": 3,"adminName":"kobe", "password": "123fff", "token": "fshfsjkdskghskdfhghdfkhhdskg"}
     ]
+
+
+ 
 
 
   }
