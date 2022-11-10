@@ -64,10 +64,18 @@ router.beforeEach((to,from,next)=>{
    
   // }
   store.dispatch('admins/getAdmin').then((res)=>{
-    console.log(res.data[0]);
+    store.commit('admins/setAdmins',res.data)
+    console.log('admins====================',res.data)
   })
-  store.dispatch('users/usersInfo').then((res)=>{
-    console.log(res.data[0]);
+
+  store.dispatch('attendances/getMonths').then((res)=>{
+    store.commit('attendances/setMonths',res.data)
+    console.log('attendances====================',res.data)
+  })
+
+  store.dispatch('users/getUsersInfo').then((res)=>{
+    console.log("res.data",res.data);
+    store.commit('users/setUsers',res.data)
   })
 
   next()

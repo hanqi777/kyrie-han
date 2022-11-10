@@ -2,20 +2,20 @@ import http from '@/utils/http'
 
 
 const state = {
-    username:'',
-    staffNumber:'',
-    age:'',
-    department:'',
-    address:'',
-    mobile:'',
-    email:''
+    usersInfoAll:''
 
 
 };
 const getters = {};
-const mutations = {};
+
+const mutations = {
+    setUsers(state,payload){
+        state.usersInfoAll = payload
+        console.log("state.usersInfoAll",state.usersInfoAll);
+    }
+};
 const actions = {
-    usersInfo(){
+    getUsersInfo(){
         return http.get('/users')
     }
 };

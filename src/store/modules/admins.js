@@ -1,8 +1,14 @@
 import http from '@/utils/http'
 
-const state = {};
+const state = {
+    amdinsInfoAll:''
+};
 const getters = {};
-const mutations = {};
+const mutations = {
+    setAdmins(state,payload){
+        state.amdinsInfoAll = payload
+    }
+};
 const actions = {
     getAdmin(){
         return http.get('/admins')
