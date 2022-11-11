@@ -74,6 +74,7 @@ export default {
                     this.$store.dispatch('users/getUsersInfo').then((resGetInfo)=>{
                     
                     if(resGetInfo){
+                        this.$store.commit("users/setUsers",resGetInfo.data)
 
                         let ret = resGetInfo.data
                         if (!_.isEmpty(ret)) {

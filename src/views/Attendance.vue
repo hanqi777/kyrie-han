@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 <template>
     <div>
     <h2 class="title"><span></span>月考勤表</h2>
@@ -35,13 +27,13 @@
         </div>
            </div>
           </div>
-      <el-table :data="shaixuan" border style="width: 100%" >
+      <el-table :data="tableDate"  border style="width: 100%" >
         <el-table-column prop="username" label="姓名" width="180" />
         <el-table-column prop="jobId" label="工号" width="180" />
         <el-table-column prop="department" label="部门" width="180" />
         <el-table-column prop="month" label="月份" width="180" />
-        <el-table-column prop="actualattendance" label="应出勤（小时）" width="180" />
-        <el-table-column prop="shouldBeAttendance" label="实际出勤（小时）" width="180" />
+        <el-table-column prop="shouldBeAttendance" label="应出勤（小时）" width="180" />
+        <el-table-column prop="actualattendance" label="实际出勤（小时）" width="180" />
         <el-table-column prop="numLate" label="迟到次数" width="180" />
       </el-table>
     </div>
@@ -56,43 +48,57 @@ import _ from 'lodash'
             return{
                 tableDate : [] ,
                 input1:'',
-                value1:'2022-01'
-                
+                value1:'2022-05',
+                tableDate1:''
             }
         },      
         created(){
-        let ret = this.$store.state.users.usersInfoAll;
-        let mon= this.$store.state.attendances.monthsInfoAll;
+          console.log("1111111111111111111111",this.$store.state.users.usersInfoAll)
+        let ret = this.$store.state.users.usersInfoAll
+        let mon= this.$store.state.attendances.monthsInfoAll
         let mons=mon[0]
-        let everymonsfiv=mons["1m"]
+        let everymonsfiv=mons["5m"]
 
         let newmon=[]
         console.log(everymonsfiv)
         console.log(ret)
-        //r
-        for(let i=0;i<everymonsfiv.length;i++){
-         if(ret[i].id===everymonsfiv[i].id){
-         console.log( newmon[i] ={...ret[i],...everymonsfiv[i],month:"1"})
+        for(let i=0;i<ret.length;i++){
+          for(let a = 0;a<everymonsfiv.length;a++){
+         if(ret[i].id===everymonsfiv[a].id){
+         newmon[i] ={...ret[i],...everymonsfiv[a],month:"5"}
          }
-        }
+         else{
+          continue
+         }
+        }}
       
           if(!_.isEmpty(newmon) ){
             console.log('this.tableData',newmon);
               this.tableDate = newmon
-              
+              this.tableDate1 = this.tableDate
           }
+
         },
         methods:{
-               
-
+             
         },
 
         computed:{
-            shaixuan(){ return this.tableDate.filter((v)=>((v.username.includes(this.input1))||(v.jobId.includes(this.input1))))},
             
+        },
+        watch:{
+           input1(newVal){
+            if(newVal !== ''){
+              return this.tableDate=this.tableDate1.filter((v)=>((v.username.includes(newVal))||(v.jobId.includes(newVal))))
+            }
+            else{
+              return this.tableDate=this.tableDate1
+            }
+           }
         }
-         
-    }
+
+        }
+    
 
 </script>
 
