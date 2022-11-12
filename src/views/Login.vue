@@ -8,7 +8,6 @@
       :model="ruleForm"
       status-icon
       :rules="rules"
-     
       class="elcontain"
     >
     <div class="divall">
@@ -19,7 +18,7 @@
           <span>WELCOME</span>
         </p>
         <p style="font-size:24px">
-          <span>巍那奇管理系统后台</span>
+          <span>巍那奇OA管理系统后台</span>
         </p>
       </div>
     </div>
@@ -28,7 +27,7 @@
         <el-row>
           
           <el-col :span="3" >
-            <el-icon><UserFilled /></el-icon>
+            <el-icon class="login-icon"><UserFilled /></el-icon>
           </el-col>
           <el-col :span="21">
             <div  class="inputDeep">
@@ -42,7 +41,7 @@
       <el-form-item label="" prop="password">
         <el-row>
           <el-col :span="3">
-            <el-icon><Lock /></el-icon>
+            <el-icon class="login-icon"><Lock /></el-icon>
           </el-col>
           <el-col :span="21">
             <el-input v-model="ruleForm.password" type="text" autocomplete="off" placeholder="密码"></el-input>
@@ -60,6 +59,8 @@
   </template>
 
   <script>
+import { ElMessage } from 'element-plus'
+
 
   export default {
     name:"LoginView",
@@ -82,10 +83,7 @@
           {min:6,max:6,message:"密码长度为6",trigger:"blur"}
 
         ]
-      },
-      passwordDisabled: false,
-      passwordText: '输入密码',
-      adminAll:[]
+      }
     }
   },
   methods: {
@@ -96,7 +94,25 @@
         formEl.validate((valid) => {
           if (valid) {
             console.log('submit!')
-          
+            this.$store.dispatch('admins/getAdmin',this.ruleForm.username).then((res)=>{
+            if(res.data.length > 0){
+              console.log("admin=================",res.data);
+              if(res.data[0].password == this.ruleForm.password){
+                ElMessage.success('登录成功')
+                this.$router.push('/home')
+                console.log("toke===========",res.data[0].token);
+                this.$store.commit('admins/setToken',res.data[0].token)
+                this.$store.commit('admins/setAdminName',res.data[0].adminName)
+              }
+              else{
+              ElMessage.error('密码错误！')
+              }
+            }
+            else{
+              ElMessage.error('用户不存在！')
+            } 
+            console.log("loginnnnnnnn==========",res);
+          })
 
           } else {
             console.log('error submit!')
@@ -104,16 +120,6 @@
           }
         })
     }
-  },
-  created(){
-    this.adminAll = this.$store.state.admins.adminInfo
-    console.log("this.adminAll1111111",this.adminAll);
-    // this.adminAll.forEach((v)=>{
-    //   if(v.id){
-    //     console.log("v.id",v.id);
-    //   }
-    // })
-  
   }
 }
 
@@ -123,7 +129,8 @@
 
 // width: 500px; margin: 20px auto; border-radius: 15px;
   </script>
-  <style>
+  
+  <style scoped>
   .divall{position: relative;}
   .divimg{
     position: absolute;
@@ -159,14 +166,14 @@
 /* .yzm-button{ margin-left: 20px; width: calc(100% - 20px);} */
 /* .div1{background-image: url(../assets/背景.jpg);height: "clientHeight"+'px';} */
 body{
-        background-image: url("../assets/背景.jpg") ;
+        background-image: url("@/assets/背景.jpg") ;
         background-size:100%;
     }
 .el-form-item{background-color: #ffffff;
        
 }
 
-.el-icon{width: 100%;}
+.login-icon{width: 100%;}
 .inputDeep .el-input--medium .el-input__inner{
   border-top: none !important;
   border-left: none !important;

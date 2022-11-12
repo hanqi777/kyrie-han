@@ -1,17 +1,27 @@
 import http from '@/utils/http'
 
 const state = {
-    amdinsInfoAll:''
+    token:'',
+    adminName:''
 };
 const getters = {};
 const mutations = {
-    setAdmins(state,payload){
-        state.amdinsInfoAll = payload
+    setToken(state,payload){
+        state.token = payload
+    },
+    setAdminName(state,payload){
+        state.adminName = payload
+        console.log('state.adminName',state.adminName);
+    },
+    clearToken(state){
+        state.token = '',
+        state.adminName =''
+        console.log('clleartoken ==============',state.token);
     }
 };
 const actions = {
-    getAdmin(){
-        return http.get('/admins')
+    getAdmin(state,adminId){
+        return http.get(`/admins?adminName=${adminId}`)
     }
 };
 

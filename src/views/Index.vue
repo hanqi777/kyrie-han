@@ -7,10 +7,26 @@
           <img class="logo" src="@/assets/logo.png" alt="">
           <h1 class="title">OA办公管理平台</h1>
         </div>
-        <el-avatar
-                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg95.699pic.com%2Fxsj%2F13%2Fbs%2Fhk.jpg%21%2Ffw%2F700%2Fwatermark%2Furl%2FL3hzai93YXRlcl9kZXRhaWwyLnBuZw%2Falign%2Fsoutheast&refer=http%3A%2F%2Fimg95.699pic.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1670578155&t=b36948c7b3050bc11843c038112a5b9d"
-              />
-        <el-button type="danger">退出</el-button>
+        <el-avatar> <img src="@/assets/sticker.jpg" alt="网络跑路了"> </el-avatar>
+        <el-dropdown trigger="click">
+        <span class="el-dropdown-link">
+          {{username}}
+          <el-icon class="el-icon--right"><caret-bottom /></el-icon>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item class="clearfix">
+              消息通知
+              <el-badge class="mark" :value="2" />
+            </el-dropdown-item>
+            <el-dropdown-item class="clearfix">
+              个人设置
+              <el-badge class="mark" />
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+        <el-button type="danger" @click="logOut">退出</el-button>
 
       </el-header>
 
@@ -80,7 +96,16 @@
         computed:{
             defaultActive(){
                 return this.$route.path
+            },
+            username(){
+              return this.$store.state.admins.adminName
             }
+        },
+        methods:{
+          logOut(){
+            this.$store.commit('admins/clearToken')
+            window.location.href = '/login'
+          }
         }
         
     }
@@ -115,10 +140,26 @@
 .title {
   color: #fff;
 }
-.el-avatar{
-  margin-right: 10px;
+
+
+.item {
+  margin-top: 10px;
+  margin-right: 40px;
+}
+.el-dropdown,.el-dropdown:hover{
   float: right;
   position: absolute;
-  right: 80px;
+  right: 90px;
+  cursor: pointer;
+}
+.el-avatar{
+  float: right;
+  position: absolute;
+  right: 155px;
+}
+.el-dropdown-link{
+  color:#fff;
+  font-size: 16px;
+  
 }
 </style>
