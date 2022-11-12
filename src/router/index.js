@@ -74,7 +74,7 @@ router.beforeEach((to,from,next)=>{
   })
 
   store.dispatch('users/getUsersInfo').then((res)=>{
-    console.log("res.data",res.data);
+    console.log("getUsersInfo==============",res.data);
     store.commit('users/setUsers',res.data)
   })
 

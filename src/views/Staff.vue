@@ -1,4 +1,5 @@
 <template>
+    <h2 class="title"><span></span>花名册</h2>
     <div>
 
         <el-input @focus="handleFocus" v-model="inputData" placeholder="Please input" class="input-with-select">
@@ -16,21 +17,82 @@
 
         <el-table :data="filterData" border style="width: 100%" max-height="500">
             <el-table-column prop="username" label="姓名" width="150" />
-            <el-table-column prop="staffId" label="工号" width="100" />
-            <el-table-column prop="department" label="部门" width="100" />
-            <el-table-column prop="age" label="年龄" width="100" />
-            <el-table-column prop="mobile" label="电话" width="150" />
-            <el-table-column prop="email" label="邮箱" width="180" />
+            <el-table-column prop="staffId" label="工号" width="150" />
+            <el-table-column prop="department" label="部门" width="120" />
+            <el-table-column prop="age" label="年龄" width="120" />
+            <el-table-column prop="mobile" label="电话" width="180" />
+            <el-table-column prop="email" label="邮箱" width="200" />
             <el-table-column prop="address" label="地址" width="250" />
             <el-table-column label="操作" fixed="right" width="150">
                 <template #default="scope">
-                    <el-button size="small" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-                    <el-button size="small" type="danger" @click="handleDelete(scope)">Delete
-                    </el-button>
+   
+                    <el-button size="small" @click="handleEdit(scope)">Edit</el-button>
+                
+                    <el-popconfirm
+                        confirm-button-text="yes"
+                        cancel-button-text="no"
+                        confirm-button-type="danger"
+                        icon="InfoFilled"
+                        icon-color="#FF0000"
+                        title="确认要删除吗?"
+                        @confirm="handleDelete(scope)"
+                    >
+                        <template #reference>
+                            <el-button size="small" type="danger">Delete</el-button>
+                        </template>
+                    </el-popconfirm>
+
                 </template>
             </el-table-column>
         </el-table>
+
+
+        <el-dialog
+            v-model="dialogVisible"
+            title="编辑员工信息"
+            width="50%"
+        >
+            <el-form
+            ref="ruleFormRef"
+            :model="ruleForm"
+            status-icon
+            :rules="rules"
+            label-width="80px"
+            >
+        
+            <el-form-item label="姓名" prop="username" >
+            <el-input v-model="ruleForm.username" type="text" autocomplete="off" />
+            </el-form-item>
+            <el-form-item label="工号" prop="staffId">
+            <el-input v-model="ruleForm.staffId" type="text" autocomplete="off" disabled />
+            </el-form-item>
+            <el-form-item label="部门" prop="department">
+            <el-input v-model="ruleForm.department" type="text" autocomplete="off" />
+            </el-form-item>
+            <el-form-item label="年龄" prop="age">
+            <el-input v-model="ruleForm.age" type="text" autocomplete="off" />
+            </el-form-item>
+            <el-form-item label="电话" prop="mobile">
+            <el-input v-model="ruleForm.mobile" type="text" autocomplete="off" />
+            </el-form-item>
+            <el-form-item label="邮箱" prop="email">
+            <el-input v-model="ruleForm.email" type="text" autocomplete="off" />
+            </el-form-item>
+            <el-form-item label="地址" prop="address">
+            <el-input v-model="ruleForm.address" type="text" autocomplete="off" />
+            </el-form-item>
+
+            </el-form>
+
+            <template #footer>
+            <span class="dialog-footer">
+                <el-button @click="this.dialogVisible = false">取消</el-button>
+                <el-button type="primary" @click="submitForm($refs.ruleFormRef)">修改</el-button>
+            </span>
+            </template>
+        </el-dialog>
     </div>
+    
 </template>
 
 <script>
@@ -40,21 +102,62 @@ export default {
     name: 'StaffView',
     data() {
         return {
-            tableData: [],
             selectData: '',
             inputData: '',
+            updateId:'',
+            dialogVisible:false,
+            ruleForm: {
+                username: '',
+                staffId: '',
+                department: '',
+                age: '',
+                mobile:'',
+                email:'',
+                address:''
+            },
+            rules:{
+                username: [
+                    { required: true, message: '请输入员工姓名!', trigger: 'blur' }
+                ],
+                staffId: [
+                    { required: true, message: '请输入员工卡号!', trigger: 'blur' }
+                ],
+                department: [
+                    { required: true, message: '请输入员工所属部门!', trigger: 'blur' }
+                ],
+                age: [
+                    { required: true, message: '请输入员工年龄!', trigger: 'blur' }
+                ],
+                mobile: [
+                    { required: true, message: '请输入员工电话!', trigger: 'blur' }
+                ],
+                email: [
+                    { required: true, message: '请输入员工邮箱!', trigger: 'blur' }
+                ],
+                address: [
+                    { required: true, message: '请输入员工地址!', trigger: 'blur' }
+                ],
+
+            }
         }
     },
     computed: {
         filterData() {
+            let tableData = this.$store.state.users.usersInfoAll
+            if (!_.isEmpty(tableData)) {
+            tableData.forEach(v => {
+                v.staffId = v.jobId
+            });        
+
+            }
             if(this.selectData === 'name'){
-                return this.tableData.filter(item => item.username.includes(this.inputData))
+                return tableData.filter(item => item.username.includes(this.inputData))
             }
             else if(this.selectData === 'id'){
-                return this.tableData.filter(item => item.jobId.includes(this.inputData))
+                return tableData.filter(item => item.jobId.includes(this.inputData))
             }
             else{
-                return this.tableData;
+                return tableData;
             }
         }
     },
@@ -64,29 +167,43 @@ export default {
                 ElMessage.error('请选择搜索条件！')
             }
         },
+        submitForm(formEl){
+            if (!formEl) return
+                    formEl.validate((valid) => {
+
+                    if (valid) {
+                        console.log("success!!");
+                        console.log('ruleForm==========',this.ruleForm);
+                        this.$store.dispatch('users/updateUserInfo',{id:this.updateId,ruleForm:this.ruleForm}).then((res)=>{
+                        console.log("updateUserInfo==========",res);
+                        if(res.data){
+                            this.dialogVisible = false
+                            this.$store.dispatch('users/getUsersInfo').then((res)=>{
+                                if (res) {
+                                    this.$store.commit('users/setUsers',res.data) 
+                                }
+                                console.log("setUsers resdata============",res.data);
+                            })
+                            ElMessage.success("修改成功！")
+                            
+                        }
+                    })
+                       
+                       
+                    } else {
+                    console.log('error submit!')
+                    return false
+                    }
+                })
+        },
         handleDelete(scope){
-            // this.tableData.splice(index,1)
-           
             console.log("row==============",scope.row);
           
             this.$store.dispatch('users/deleteUser',scope.row.id).then((resDelete)=>{
                 if(resDelete){
                     this.$store.dispatch('users/getUsersInfo').then((resGetInfo)=>{
-                    
                     if(resGetInfo){
                         this.$store.commit("users/setUsers",resGetInfo.data)
-
-                        let ret = resGetInfo.data
-                        if (!_.isEmpty(ret)) {
-
-                            ret.forEach(v => {
-                                v.staffId = v.jobId
-                            });
-                            this.tableData = ret
-                            console.log('this.tableData', this.tableData);
-
-                        }
-
                         console.log("resGetInfo============",resGetInfo);
                     }
                     else{
@@ -98,19 +215,12 @@ export default {
                 }
                console.log("resDelete==========",resDelete);
             })
-        }
-    },
-    created() {
-
-
-        let ret = this.$store.state.users.usersInfoAll
-        if (!_.isEmpty(ret)) {
-
-            ret.forEach(v => {
-                v.staffId = v.jobId
-            });
-            this.tableData = ret
-            console.log('this.tableData', this.tableData);
+        },
+        handleEdit(scope){
+            this.dialogVisible = true
+            this.ruleForm =  _.cloneDeep(scope.row)
+            this.updateId = scope.row.id
+            console.log("scope====================",scope);
 
         }
     }
@@ -126,4 +236,15 @@ export default {
 .input-with-select .el-input-group__prepend {
     background-color: var(--el-fill-color-blank);
 }
+.title{font-weight: normal;line-height: 50px;}
+.title span{height: 26px;width: 6px;border-radius: 3px;background:  rgb(129, 129, 224);display:inline-block;margin-bottom: 2px;vertical-align:text-bottom;margin-right: 8px;}
+.dialog-footer button:first-child {
+  margin-right: 10px;
+}
+.dialog-footer{
+
+    display: flex;
+    justify-content: center;
+}
+
 </style>
