@@ -25,23 +25,8 @@
             <el-table-column prop="address" label="地址" width="250" />
             <el-table-column label="操作" fixed="right" width="150">
                 <template #default="scope">
-   
-                    <el-button size="small" @click="handleEdit(scope)">Edit</el-button>
-                
-                    <el-popconfirm
-                        confirm-button-text="yes"
-                        cancel-button-text="no"
-                        confirm-button-type="danger"
-                        icon="InfoFilled"
-                        icon-color="#FF0000"
-                        title="确认要删除吗?"
-                        @confirm="handleDelete(scope)"
-                    >
-                        <template #reference>
-                            <el-button size="small" type="danger">Delete</el-button>
-                        </template>
-                    </el-popconfirm>
-
+                    <el-button size="small" @click="handleEdit(scope)">Edit</el-button>     
+                    <el-button @click="handleDelete(scope)" size="small" type="danger">Delete</el-button>               
                 </template>
             </el-table-column>
         </el-table>
@@ -97,7 +82,7 @@
 
 <script>
 import _ from 'lodash'
-import { ElMessage } from 'element-plus'
+import { ElMessage,ElMessageBox  } from 'element-plus'
 export default {
     name: 'StaffView',
     data() {
@@ -197,24 +182,44 @@ export default {
                 })
         },
         handleDelete(scope){
-            console.log("row==============",scope.row);
-          
-            this.$store.dispatch('users/deleteUser',scope.row.id).then((resDelete)=>{
-                if(resDelete){
-                    this.$store.dispatch('users/getUsersInfo').then((resGetInfo)=>{
-                    if(resGetInfo){
-                        this.$store.commit("users/setUsers",resGetInfo.data)
-                        console.log("resGetInfo============",resGetInfo);
-                    }
-                    else{
+            ElMessageBox.confirm(
+                '将要永久删除此条，继续？',
+                '警告',
+                {
+                confirmButtonText: '继续',
+                cancelButtonText: '取消',
+                type: 'warning',
+                },
+                console.log("row==============",scope.row)
+            ) 
+            .then(() => {  
+                    this.$store.dispatch('users/deleteUser',scope.row.id).then((resDelete)=>{
+                    if(resDelete){
+                        ElMessage({
+                            type: 'success',
+                            message: '删除成功！',
+                        })
+                        this.$store.dispatch('users/getUsersInfo').then((resGetInfo)=>{
+                        if(resGetInfo){
+                            this.$store.commit("users/setUsers",resGetInfo.data)
+                            console.log("resGetInfo============",resGetInfo);
+                        }
+                        else{
+                            ElMessage.error('请求info错误')
+                        }
+                    })
+                    }else{
                         ElMessage.error('请求info错误')
                     }
-                })
-                }else{
-                    ElMessage.error('请求info错误')
-                }
-               console.log("resDelete==========",resDelete);
+                         console.log("resDelete==========",resDelete);
+                    })       
             })
+            .catch(() => {
+            ElMessage({
+                type: 'info',
+                message: '取消删除',
+            })
+            })   
         },
         handleEdit(scope){
             this.dialogVisible = true
