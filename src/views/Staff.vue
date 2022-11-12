@@ -195,12 +195,12 @@ export default {
             .then(() => {  
                     this.$store.dispatch('users/deleteUser',scope.row.id).then((resDelete)=>{
                     if(resDelete){
-                        ElMessage({
-                            type: 'success',
-                            message: '删除成功！',
-                        })
                         this.$store.dispatch('users/getUsersInfo').then((resGetInfo)=>{
                         if(resGetInfo){
+                            ElMessage({
+                            type: 'success',
+                            message: '删除成功！',
+                            })
                             this.$store.commit("users/setUsers",resGetInfo.data)
                             console.log("resGetInfo============",resGetInfo);
                         }
