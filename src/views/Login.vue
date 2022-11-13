@@ -1,62 +1,60 @@
 
 
 <template>
-  <div class="div1">
-    <div>
+  <div class="box">
+      <div class="head-wrapper">
+        <div class="head-line">
+          <div class="divtitle">
+            <p style="font-size:32px; padding-bottom: 15px;">
+              <span>WELCOME</span>
+            </p>
+            <p style="font-size:24px">
+              <span>巍那奇OA管理系统后台</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
       <el-form
       ref="ruleFormRef"
       :model="ruleForm"
       status-icon
       :rules="rules"
       class="elcontain"
-    >
-    <div class="divall">
-      <div class="divimg">
-      </div>
-      <div class="divtitle">
-        <p style="font-size:32px">
-          <span>WELCOME</span>
-        </p>
-        <p style="font-size:24px">
-          <span>巍那奇OA管理系统后台</span>
-        </p>
-      </div>
-    </div>
-    <!-- 用户名输入框 -->
-      <el-form-item label="" prop="username">
-        <el-row>
-          
-          <el-col :span="3" >
-            <el-icon class="login-icon"><UserFilled /></el-icon>
-          </el-col>
-          <el-col :span="21">
-            <div  class="inputDeep">
-              <el-input v-model="ruleForm.username" type="text" autocomplete="off" placeholder="姓名" ></el-input>
-          </div>
-          </el-col>
-        </el-row>
-      </el-form-item>
+      >
+   
+        <!-- 用户名输入框 -->
+        <el-form-item label="" prop="username">
+                <el-input 
+                v-model="ruleForm.username" 
+                prefix-icon="User"
+                type="text" 
+                utocomplete="off" 
+                placeholder="请输入姓名" >
+                </el-input>
+        </el-form-item>
 
-      <!-- 密码输入框 -->
-      <el-form-item label="" prop="password">
-        <el-row>
-          <el-col :span="3">
-            <el-icon class="login-icon"><Lock /></el-icon>
-          </el-col>
-          <el-col :span="21">
-            <el-input v-model="ruleForm.password" type="text" autocomplete="off" placeholder="密码"></el-input>
-          </el-col>
-        </el-row>
-      </el-form-item>
+        <!-- 密码输入框 -->
+        <el-form-item label="" prop="password">
+              <el-input 
+              v-model="ruleForm.password" 
+              type="password"
+              prefix-icon="Unlock"
+              autocomplete="off" 
+              placeholder="请输入密码"></el-input>
+        </el-form-item>
 
-      <!-- 登陆按钮 -->
-      <el-form-item>
-        <el-button class="login-button" type="primary" @click="submitForm($refs.ruleFormRef)">登录</el-button>
-      </el-form-item>
-    </el-form>
-    </div>
-   </div>
-  </template>
+        <!-- 登陆按钮 -->
+        <el-form-item>
+          <el-button 
+          class="login-button" 
+          type="primary" 
+          @click="submitForm($refs.ruleFormRef)">登录</el-button>
+        </el-form-item>
+      </el-form>
+  </div>
+</template>
 
   <script>
 import { ElMessage } from 'element-plus'
@@ -74,7 +72,7 @@ import { ElMessage } from 'element-plus'
       },
       rules: {
         username: [
-          { required: true, message: '请输入姓名', trigger: 'blur' },
+          { required: true, message: '请输入姓名', trigger: 'blur'},
           {min:1,max:5,message:"长度3-5",trigger:"blur"}
 
           ],
@@ -127,57 +125,53 @@ import { ElMessage } from 'element-plus'
     
   
 
-// width: 500px; margin: 20px auto; border-radius: 15px;
   </script>
   
   <style scoped>
-  .divall{position: relative;}
-  .divimg{
-    position: absolute;
-    top:9px;
-    left:0 ;
-    width: 2px;
-    height: 70px;
-    background: #ffffff;
-
+  .box{
+    width: 100%;
+    height: 100vh;
+    background-image: url(@/assets/bg.jpg);
+    background-size:100%;
+   
   }
-.divtitle{color: #ffffff;
-        font-weight: 200;
-        font-style: normal;
-        padding-bottom: 40px;
-        margin-left: 30px;
+.divtitle{
+  color: #ffffff;
+  font-weight: 200;
+  font-style: normal;
+  padding-left: 25px;
+  /* border: 1px #f0f0ed solid; */
 }
-
-
-
-
+.head-line{
+  width: 350px;
+  position: absolute;
+  top: 22vh;
+  /* border: 1px #c8cf4a solid; */
+  border-left: 2px #ffffff solid;
+}
 .el-form{   
-        background-clip: padding-box;
-        margin: 180px auto;
-        width: 350px;
-        padding: 15px 35px 15px 35px;
-        background: black;
-        background-color:rgba(255,0,0,0);
-        
-}
-.el-row{ width: 100%;}
-.login-button{ width: 100%;
-}
-/* .yzm-button{ margin-left: 20px; width: calc(100% - 20px);} */
-/* .div1{background-image: url(../assets/背景.jpg);height: "clientHeight"+'px';} */
-body{
-        background-image: url("@/assets/背景.jpg") ;
-        background-size:100%;
-    }
-.el-form-item{background-color: #ffffff;
-       
+  margin: 40vh auto;
+  width: 350px;
 }
 
-.login-icon{width: 100%;}
-.inputDeep .el-input--medium .el-input__inner{
-  border-top: none !important;
-  border-left: none !important;
-  border-right: none !important;
-  border-radius: 0;
+.head-wrapper{
+  display: flex;
+  justify-content: center;
+  /* border: 1px #ffffff solid; */
 }
+.login-button{ 
+  width: 100%;
+}
+.el-form-item{
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 5px;
+  margin:45px auto
+}
+.el-form-item:nth-of-type(1){
+  margin-top: 200px;
+}
+
+
+
 </style>

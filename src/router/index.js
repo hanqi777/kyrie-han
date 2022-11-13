@@ -1,5 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import store from '@/store/index'
+import attendance from '@/views/Attendance.vue'
+import staff from '@/views/Staff.vue'
+import home from '@/views/Home.vue'
+import notification from '@/views/Notification.vue'
+import login from '@/views/Login.vue'
+import index from '@/views/Index.vue'
+
 import _ from 'lodash'
 
 const routes = [
@@ -7,48 +14,34 @@ const routes = [
     path: '/',
     name: 'index',
     redirect:'/home',
-    component: () => import('@/views/Index.vue'),
+    component: index,
     meta:{auth:true},
     children:[
       {
         path: '/home',
         name: 'home',
-        component: () => import('@/views/Home.vue')
+        component:home
       },
       {
         path: '/notification',
         name: 'notification',
-        component: () => import('@/views/Notification.vue')
+        component:notification
       },
       {
         path: '/attendance',
         name: 'attendance',
-        component: () => import('@/views/Attendance.vue'),
-        beforeEnter:()=>{
-          store.dispatch('users/getUsersInfo').then((res)=>{
-            console.log("getUsersInfo==============",res.data);
-            store.commit('users/setUsers',res.data)
-          });
-        store.dispatch('attendances/getMonths').then((res)=>{
-          store.commit('attendances/setMonths',res.data)
-          console.log('attendances====================',res.data)
-        })
-
-      }
-
+        component: attendance
       },
       {
         path: '/staff',
         name: 'staff',
-        component: () => import('@/views/Staff.vue'),
-        beforeEnter:(to,from)=>{
-          console.log(to);
-          console.log(from);
-          store.dispatch('users/getUsersInfo').then((res)=>{
-            console.log("getUsersInfo==============",res.data);
-            store.commit('users/setUsers',res.data)
-          })
-      }
+        component: staff,
+        // beforeEnter:()=>{
+        //   store.dispatch('users/getUsersInfo').then((res)=>{
+        //   console.log("getUsersInfo==============",res.data);
+        //   store.commit('users/setUsers',res.data)
+        // });
+        // }
       },
       {
         path: '/transfer',
@@ -66,7 +59,7 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/Login.vue'),
+    component: login,
     meta:{auth:false},
   }
 ]
@@ -79,6 +72,10 @@ const router = createRouter({
 
 router.beforeEach((to,from,next)=>{
   console.log('to===============',to);
+  
+
+
+
 
   if(to.matched[0].meta.auth){
    
@@ -91,6 +88,15 @@ router.beforeEach((to,from,next)=>{
       store.commit('admins/clearToken')
     }
     else{
+      store.dispatch('users/getUsersInfo').then((res)=>{
+        console.log("getUsersInfo==============",res.data);
+        store.commit('users/setUsers',res.data)
+      });
+      store.dispatch('attendances/getMonths').then((res)=>{
+        store.commit('attendances/setMonths',res.data)
+        console.log('attendances====================',res.data)
+      })
+
       store.dispatch('admins/getAdmin',adminName).then((res)=>{
         let localToken = JSON.parse(window.localStorage.getItem('vuex')).admins.token
         console.log("localstorage vuex ============",localToken);

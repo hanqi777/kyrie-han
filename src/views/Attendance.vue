@@ -51,7 +51,8 @@ import _ from 'lodash'
                 value1:'2022-05',
                 tableDate1:''
             }
-        },      
+        },
+    
         created(){
           console.log("1111111111111111111111",this.$store.state.users.usersInfoAll)
         let ret = this.$store.state.users.usersInfoAll
