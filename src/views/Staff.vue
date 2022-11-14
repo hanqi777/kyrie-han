@@ -1,15 +1,19 @@
 <template>
     <h2 class="title"><span></span>花名册</h2>
     <div>
-
-        <el-input @focus="handleFocus" v-model="inputData" placeholder="Please input" class="input-with-select">
-            <template #append>
-                <el-select v-model="selectData" placeholder="Select" style="width: 115px">
-                    <el-option label="姓名" value="name" />
-                    <el-option label="工号" value="id" />
-                </el-select>
-            </template>
-        </el-input>
+        <div class="search">
+            <el-input @focus="handleFocus" v-model="inputData" placeholder="Please input" class="input-with-select">
+                <template #append>
+                    <el-select v-model="selectData" placeholder="Select" style="width: 115px">
+                        <el-option label="姓名" value="name" />
+                        <el-option label="工号" value="id" />
+                    </el-select>
+                </template>
+            </el-input>
+            <div class="addBtn">
+            <el-button type="primary" @click="handleAdd(scope)">新增</el-button>
+            </div>
+        </div>
 
 
 
@@ -33,9 +37,10 @@
 
 
         <el-dialog
-            v-model="dialogVisible"
-            title="编辑员工信息"
-            width="50%"
+        :before-close="handleClose"
+        v-model="dialogVisible"
+        title="编辑员工信息"
+        width="50%"
         >
             <el-form
             ref="ruleFormRef"
@@ -49,7 +54,7 @@
             <el-input v-model="ruleForm.username" type="text" autocomplete="off" />
             </el-form-item>
             <el-form-item label="工号" prop="staffId">
-            <el-input v-model="ruleForm.staffId" type="text" autocomplete="off" disabled />
+            <el-input v-model="ruleForm.staffId" type="text" autocomplete="off" :disabled="disableBtn" />
             </el-form-item>
             <el-form-item label="部门" prop="department">
             <el-input v-model="ruleForm.department" type="text" autocomplete="off" />
@@ -71,8 +76,9 @@
 
             <template #footer>
             <span class="dialog-footer">
-                <el-button @click="this.dialogVisible = false">取消</el-button>
-                <el-button type="primary" @click="submitForm($refs.ruleFormRef)">修改</el-button>
+                <el-button @click="handleClose">取消</el-button>
+                <el-button v-if="updateFlag" type="primary" @click="submitForm($refs.ruleFormRef)">修改</el-button>
+                <el-button v-if="addFlag" type="primary" @click="addForm($refs.ruleFormRef)">添加</el-button>
             </span>
             </template>
         </el-dialog>
@@ -83,15 +89,7 @@
 <script>
 import _ from 'lodash'
 import { ElMessage,ElMessageBox  } from 'element-plus'
-export default {
-    name: 'StaffView',
-    data() {
-        return {
-            selectData: '',
-            inputData: '',
-            updateId:'',
-            dialogVisible:false,
-            ruleForm: {
+const ruleForm = {
                 username: '',
                 staffId: '',
                 department: '',
@@ -99,7 +97,19 @@ export default {
                 mobile:'',
                 email:'',
                 address:''
-            },
+            }
+export default {
+    name: 'StaffView',
+    data() {
+        return {
+            selectData: '',
+            disableBtn:true,
+            inputData: '',
+            updateId:'',
+            dialogVisible:false,
+            addFlag:true,
+            updateFlag:true,
+            ruleForm,
             rules:{
                 username: [
                     { required: true, message: '请输入员工姓名!', trigger: 'blur' }
@@ -121,7 +131,7 @@ export default {
                 ],
                 address: [
                     { required: true, message: '请输入员工地址!', trigger: 'blur' }
-                ],
+                ]
 
             }
         }
@@ -163,6 +173,8 @@ export default {
                         console.log("updateUserInfo==========",res);
                         if(res.data){
                             this.dialogVisible = false
+                            this.ruleForm = ruleForm;
+                            this.$refs.ruleFormRef.resetFields()
                             this.$store.dispatch('users/getUsersInfo').then((res)=>{
                                 if (res) {
                                     this.$store.commit('users/setUsers',res.data) 
@@ -222,11 +234,63 @@ export default {
             })   
         },
         handleEdit(scope){
-            this.dialogVisible = true
+            this.addFlag = false
+            this.disableBtn = true
+            this.updateFlag = true
             this.ruleForm =  _.cloneDeep(scope.row)
             this.updateId = scope.row.id
+            this.dialogVisible = true
             console.log("scope====================",scope);
+        },
+        handleAdd(scope){
+            this.addFlag = true
+            this.disableBtn = false
+            this.updateFlag = false
+            this.dialogVisible = true
+            console.log("handleAdd scope==========",scope);
+        },
+        handleClose(){
+            this.$refs.ruleFormRef.resetFields()
+            this.ruleForm = ruleForm;
+            this.dialogVisible = false
+        },
+        addForm(formEl){
+            if (!formEl) return
+                    formEl.validate((valid) => {
 
+                    if (valid) {
+                        console.log("success!!");
+                        console.log('ruleForm==========',this.ruleForm);
+                        let addFormTable = {
+                            username: this.ruleForm.username,
+                            jobId: this.ruleForm.staffId,
+                            department: this.ruleForm.department,
+                            age: this.ruleForm.age,
+                            mobile:this.ruleForm.mobile,
+                            email:this.ruleForm.email,
+                            address:this.ruleForm.address
+                        }
+                        this.$store.dispatch('users/addUsersInfo',addFormTable).then((res)=>{
+                        console.log("addUsersInfo==========",res);
+                        if(res.data){
+                            this.dialogVisible = false
+                            this.$store.dispatch('users/getUsersInfo').then((res)=>{
+                                if (res) {
+                                    this.$store.commit('users/setUsers',res.data) 
+                                }
+                                console.log("setUsers resdata============",res.data);
+                            })
+                            ElMessage.success("添加成功！")
+                            
+                        }
+                    })
+                       
+                       
+                    } else {
+                    console.log('error submit!')
+                    return false
+                    }
+                })
         }
     }
 
@@ -235,7 +299,7 @@ export default {
 
 <style scoped>
 .el-input {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .input-with-select .el-input-group__prepend {
@@ -247,9 +311,17 @@ export default {
   margin-right: 10px;
 }
 .dialog-footer{
-
     display: flex;
     justify-content: center;
+}
+
+.search{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.addBtn{
+    margin-left: 2px;
 }
 
 </style>

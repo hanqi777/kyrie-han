@@ -2,26 +2,29 @@ import http from '@/utils/http'
 
 
 const state = {
-    usersInfoAll:''
+    usersInfoAll: ''
 };
 const getters = {};
 
 const mutations = {
-    setUsers(state,payload){
+    setUsers(state, payload) {
         state.usersInfoAll = payload
-        console.log("state.usersInfoAll",state.usersInfoAll);
+        console.log("state.usersInfoAll", state.usersInfoAll);
         state
     }
 };
 const actions = {
-    getUsersInfo(){
+    getUsersInfo() {
         return http.get('/users')
     },
-    deleteUser(state,id){
+    deleteUser(state, id) {
         return http.delete('/users/' + id)
     },
-    updateUserInfo(state,config){
-    return http.patch ('users/'+ config.id,config.ruleForm,{'Content-Type': 'application/json'})
+    updateUserInfo(state, config) {
+        return http.patch('users/' + config.id, config.ruleForm, { 'Content-Type': 'application/json' })
+    },
+    addUsersInfo(state, data) {
+        return http.post('/users', data)
     }
 };
 
