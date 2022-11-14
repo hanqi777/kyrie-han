@@ -159,28 +159,13 @@ let newmon1=[]
             }
            },
            value1(newVal){
-            console.log(newVal,1111111111111111111);
-            newVal=String(newVal)
-              if(newVal === 'Sun May 01 2022 00:00:00 GMT+0800 (中国标准时间)')
-              { 
-                return this.tableDate=this.tableDate5,this.tableDa=this.tableDate
-                   }else 
-              if(newVal === 'Fri Apr 01 2022 00:00:00 GMT+0800 (中国标准时间)')
-              { return this.tableDate=this.tableDate4,this.tableDa=this.tableDate
-                   }else 
-              if(newVal === 'Tue Mar 01 2022 00:00:00 GMT+0800 (中国标准时间)')
-              { return this.tableDate=this.tableDate3,this.tableDa=this.tableDate
-                   }else 
-              if(newVal === 'Tue Feb 01 2022 00:00:00 GMT+0800 (中国标准时间)')
-              { return this.tableDate=this.tableDate2,this.tableDa=this.tableDate
-                   }else 
-              if(newVal === 'Sat Jan 01 2022 00:00:00 GMT+0800 (中国标准时间)')
-              { 
-                return this.tableDate=this.tableDate1,this.tableDa=this.tableDate
-                   }else{
-                return this.tableDate=[]
-                   }
-              }
+            // newVal=String(newVal)
+           // console.log(newVal.getMonth(),1111111111111111111);
+             this.tableDate=this[`tableDate${newVal.getMonth()+1}`]
+             this.tableDa=this.tableDate
+             return;
+           
+              } 
            }
         }
 
