@@ -34,22 +34,26 @@
         <el-table-column prop="month" label="月份" width="180" />
         <el-table-column prop="shouldBeAttendance" label="应出勤（小时）" width="180" />
         <el-table-column prop="actualattendance" label="实际出勤（小时）" width="180" />
-        <el-table-column prop="numLate" label="迟到次数" width="180" />
+        <el-table-column prop="numLate" label="迟到次数"  />
       </el-table>
     </div>
     
 </template>
 
 <script>
-import _ from 'lodash'
     export default {
         name:'attendanceView',
         data(){
             return{
                 tableDate : [] ,
                 input1:'',
-                value1:'2022-05',
-                tableDate1:''
+                value1:'',
+                tableDate1:'',
+                tableDate2:'',
+                tableDate3:'',
+                tableDate4:'',
+                tableDate5:'',
+                tableDa:''
             }
         },
     
@@ -58,27 +62,85 @@ import _ from 'lodash'
         let ret = this.$store.state.users.usersInfoAll
         let mon= this.$store.state.attendances.monthsInfoAll
         let mons=mon[0]
+        
         let everymonsfiv=mons["5m"]
+        let everymonsfor=mons["4m"]
+        let everymonsthr=mons["3m"]
+        let everymonstwo=mons["2m"]
+        let everymonsone=mons["1m"]
 
-        let newmon=[]
+        //================================================五月====================================================
+        let newmon5=[]
         console.log(everymonsfiv)
         console.log(ret)
         for(let i=0;i<ret.length;i++){
           for(let a = 0;a<everymonsfiv.length;a++){
          if(ret[i].id===everymonsfiv[a].id){
-         newmon[i] ={...ret[i],...everymonsfiv[a],month:"5"}
+         newmon5[i] ={...ret[i],...everymonsfiv[a],month:"5"}
          }
          else{
           continue
          }
         }}
       
-          if(!_.isEmpty(newmon) ){
-            console.log('this.tableData',newmon);
-              this.tableDate = newmon
-              this.tableDate1 = this.tableDate
-          }
-
+              this.tableDate = newmon5
+              this.tableDate5 = this.tableDate
+              this.tableDa=this.tableDate
+//=============================================四月==========================================
+        let newmon4=[]
+        for(let i=0;i<ret.length;i++){
+          for(let a = 0;a<everymonsfor.length;a++){
+         if(ret[i].id===everymonsfor[a].id){
+         newmon4[i] ={...ret[i],...everymonsfor[a],month:"4"}
+         }
+         else{
+          continue
+         }
+        }}
+      
+              this.tableDate4 = newmon4
+          
+//=============================================3月==========================================
+let newmon3=[]
+        for(let i=0;i<ret.length;i++){
+          for(let a = 0;a<everymonsthr.length;a++){
+         if(ret[i].id===everymonsthr[a].id){
+         newmon3[i] ={...ret[i],...everymonsthr[a],month:"3"}
+         }
+         else{
+          continue
+         }
+        }}
+      
+              this.tableDate3 = newmon3
+          
+       //=============================================2月==========================================
+let newmon2=[]
+        for(let i=0;i<ret.length;i++){
+          for(let a = 0;a<everymonstwo.length;a++){
+         if(ret[i].id===everymonstwo[a].id){
+         newmon2[i] ={...ret[i],...everymonstwo[a],month:"2"}
+         }
+         else{
+          continue
+         }
+        }}
+      
+              this.tableDate2 = newmon2
+          
+                 //=============================================1月==========================================
+let newmon1=[]
+        for(let i=0;i<ret.length;i++){
+          for(let a = 0;a<everymonsone.length;a++){
+         if(ret[i].id===everymonsone[a].id){
+         newmon1[i] ={...ret[i],...everymonsone[a],month:"1"}
+         }
+         else{
+          continue
+         }
+        }}
+              this.tableDate1 = newmon1
+        
         },
         methods:{
              
@@ -90,15 +152,39 @@ import _ from 'lodash'
         watch:{
            input1(newVal){
             if(newVal !== ''){
-              return this.tableDate=this.tableDate1.filter((v)=>((v.username.includes(newVal))||(v.jobId.includes(newVal))))
+              return this.tableDate=this.tableDa.filter((v)=>((v.username.includes(newVal))||(v.jobId.includes(newVal))))
             }
             else{
-              return this.tableDate=this.tableDate1
+              return this.tableDate=this.tableDa
             }
+           },
+           value1(newVal){
+            console.log(newVal,1111111111111111111);
+            newVal=String(newVal)
+              if(newVal === 'Sun May 01 2022 00:00:00 GMT+0800 (中国标准时间)')
+              { 
+                return this.tableDate=this.tableDate5,this.tableDa=this.tableDate
+                   }else 
+              if(newVal === 'Fri Apr 01 2022 00:00:00 GMT+0800 (中国标准时间)')
+              { return this.tableDate=this.tableDate4,this.tableDa=this.tableDate
+                   }else 
+              if(newVal === 'Tue Mar 01 2022 00:00:00 GMT+0800 (中国标准时间)')
+              { return this.tableDate=this.tableDate3,this.tableDa=this.tableDate
+                   }else 
+              if(newVal === 'Tue Feb 01 2022 00:00:00 GMT+0800 (中国标准时间)')
+              { return this.tableDate=this.tableDate2,this.tableDa=this.tableDate
+                   }else 
+              if(newVal === 'Sat Jan 01 2022 00:00:00 GMT+0800 (中国标准时间)')
+              { 
+                return this.tableDate=this.tableDate1,this.tableDa=this.tableDate
+                   }else{
+                return this.tableDate=[]
+                   }
+              }
            }
         }
 
-        }
+        
     
 
 </script>
