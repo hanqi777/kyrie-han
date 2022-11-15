@@ -94,11 +94,11 @@ let chart1 = ()=>{
           show: false
         },
         data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' }
+          { value: 1048, name: '线上收益' },
+          { value: 735, name: '团购收益' },
+          { value: 580, name: '零售收益' },
+          { value: 484, name: '电销收益' },
+          { value: 300, name: '内购收益' }
         ]
       }
     ]
@@ -153,14 +153,12 @@ let chart1 = ()=>{
 </script>
 <style scoped>
 .showDataTotal1{
-  width: 50%;
-  height: 80vh;
-  /* border: 1px #000 solid; */
+  width: 700px;
+  height: 595px;
 }
 .showDataTotal2{
-  width: 50%;
-  height: 80vh;
-  /* border: 1px #000 solid; */
+  width: 700px;
+  height: 595px;
 }
 h2{
   text-align: center;
