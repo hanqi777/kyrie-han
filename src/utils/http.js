@@ -5,62 +5,62 @@ import axios from "axios";
 // import store from '@/store/index'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080/api/',
-  timeout: 10000,
+    baseURL: 'http://39.108.164.172/api',
+    timeout: 10000,
 });
 
 
 
 
 // 添加请求拦截器
-instance.interceptors.request.use(function (
-  config
-  ) {
-    
-    return config;
- 
-  // 在发送请求之前做些什么
+instance.interceptors.request.use(function(
+    config
+) {
 
-//   config.headers.token = store.state.users.token
-//   return config;
-}, function (error) {
-  // 对请求错误做些什么
-  return Promise.reject(error);
+    return config;
+
+    // 在发送请求之前做些什么
+
+    //   config.headers.token = store.state.users.token
+    //   return config;
+}, function(error) {
+    // 对请求错误做些什么
+    return Promise.reject(error);
 });
 
 // 添加响应拦截器
-instance.interceptors.response.use(function (response) {
-  // 对响应数据做点什么
-  return response;
-}, function (error) {
-  // 对响应错误做点什么
-  return Promise.reject(error);
+instance.interceptors.response.use(function(response) {
+    // 对响应数据做点什么
+    return response;
+}, function(error) {
+    // 对响应错误做点什么
+    return Promise.reject(error);
 });
 
 
 const http = {
-  get(url, data, config) {
-    return instance.get(url, {
-      params: data,
-      ...config
-    })
-  },
-  post(url, data, config) {
-    return instance.post(url, data, config)
+    get(url, data, config) {
+        return instance.get(url, {
+            params: data,
+            ...config
+        })
+    },
+    post(url, data, config) {
+        return instance.post(url, data, config)
 
-  },
-  put(url, data, config) {
-    return instance.put(url, data, config)
-  },
-  patch(url, data, config) {
-    return instance.patch(url, data, config)
-  },
-  delete(url, data, config) {
-    return instance.delete(url, {
-      data,
-      ...config
-    })
-  }
+    },
+    put(url, data, config) {
+        return instance.put(url, data, config)
+    },
+    patch(url, data, config) {
+        return instance.patch(url, data, config)
+    },
+    delete(url, data, config) {
+        return instance.delete(url, {
+            data,
+            ...config
+        })
+    }
 }
 
 
