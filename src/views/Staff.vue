@@ -274,6 +274,8 @@ export default {
                         console.log("addUsersInfo==========",res);
                         if(res.data){
                             this.dialogVisible = false
+                            this.ruleForm = ruleForm;
+                            this.$refs.ruleFormRef.resetFields()
                             this.$store.dispatch('users/getUsersInfo').then((res)=>{
                                 if (res) {
                                     this.$store.commit('users/setUsers',res.data) 

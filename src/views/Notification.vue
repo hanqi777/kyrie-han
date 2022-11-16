@@ -4,7 +4,7 @@
                   <h3 text="2xl" justify="center">{{ }}</h3>
                 </el-carousel-item>
         </el-carousel><el-card shadow="hover"> 
-            <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftanyuecn.com%2Fuploads%2F20210511%2Fcb0fcbc7c0055cb2892be8ab1549214b.png&refer=http%3A%2F%2Ftanyuecn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1671011598&t=23ff02fda51c15d21e3a2ad341a67dee" alt="">
+            <img src="../assets/index/4.jpg" alt="">
             <div class="wenzi">
                 <h2>集团历史</h2>
                 巍那奇集团始建于1994年，立足主业，坚守实业，是以炼油、石化、聚酯新材料和纺织全产业链发展的国际型企业。集团现拥有全球单体产能最大的PTA工厂之一、全球最大的功能性纤维生产基地和织造企业之一，员工达12万，建有国家“企业技术中心”，企业竞争力和产品品牌价值均列国际行业前列。巍那奇集团2021年总营收7323亿元，现位列世界500强第75位、中国企业500强第24位、中国民营企业500强第3位、中国制造业企业500强第5位，获国务院颁发的“国家科技进步奖”和“全国就业先进企业”等殊荣。 </div>
